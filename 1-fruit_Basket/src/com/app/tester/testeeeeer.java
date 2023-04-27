@@ -138,7 +138,7 @@ public class testeeeeer {
 				break;
 		}
 		}while(choice!=10);
-
+System.out.println("----------------------------------");
 	}
 
 }
