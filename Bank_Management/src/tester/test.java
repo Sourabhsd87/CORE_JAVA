@@ -1,19 +1,21 @@
 package tester;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import utils.populateMap;
 
 import com.banking.AccType;
 import com.banking.bankAccount;
-
+import static validationRules.validationRules.*;
 public class test {
 
 	public static void main(String[] args) throws Exception{
 		
 		try(Scanner sc = new Scanner(System.in)){
 			
-			Map<Integer,bankAccount> Bank= populateMap.populateMap();
+			//Map<Integer,bankAccount> Bank= populateMap.populatemap();
+			Map<Integer,bankAccount> Bank = new HashMap<Integer, bankAccount>();
 			boolean exit = false;
 			
 			while(!exit)
@@ -24,9 +26,15 @@ public class test {
 					switch(sc.nextInt())
 					{
 					case 1:System.out.println("Enter Name | Account type | Balance | CreatedOn | lastUpdated");
-						
+					    bankAccount acc = validateAllInputs(sc.next(),sc.next(),sc.nextDouble(),sc.next(),sc.next());
+						Bank.put(acc.getAcctno(),acc);
+						System.out.println("Account created successfully.");
 						break;
 					case 2:
+						for(Map.Entry<Integer, bankAccount> m : Bank.entrySet()) 
+						{
+							System.out.println(m);
+						}
 						break;
 					case 3:
 						break;
@@ -38,18 +46,17 @@ public class test {
 						break;
 					case 0:
 						exit=true;
-						break
+						break;
 					}
-				}
-					
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
+					sc.next();
 				}
 				
 			}
 		}
 
 	}
-
+}

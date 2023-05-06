@@ -10,10 +10,15 @@ public class bankAccount {
 	private LocalDate createdOn ;
 	private LocalDate lastUpdated;
 	private boolean isActive;
-	public bankAccount(int acctno, String custName, AccType type, double balance, LocalDate createdOn,
-			LocalDate lastUpdated, boolean isActive) {
+	public static int idgenrator;
+	static 
+	{
+		idgenrator=101;
+	}
+	public bankAccount( String custName, AccType type, double balance, LocalDate createdOn,
+			LocalDate lastUpdated) {
 		super();
-		this.acctno = acctno;
+		this.acctno = idgenrator++;
 		this.custName = custName;
 		this.type = type;
 		this.balance = balance;
@@ -25,6 +30,9 @@ public class bankAccount {
 	public String toString() {
 		return "bankAccount [acctno=" + acctno + ", custName=" + custName + ", type=" + type + ", balance=" + balance
 				+ ", createdOn=" + createdOn + ", lastUpdated=" + lastUpdated + ", isActive=" + isActive + "]";
+	}
+	public int getAcctno() {
+		return acctno;
 	}
 	
 	
