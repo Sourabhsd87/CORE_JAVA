@@ -8,6 +8,8 @@ import utils.populateMap;
 
 import com.banking.AccType;
 import com.banking.bankAccount;
+import com.customexception.bankingException;
+
 import static validationRules.validationRules.*;
 import static com.banking.bankAccount.*;
 public class test {
@@ -56,6 +58,9 @@ public class test {
 						if(Bank.containsKey(id))
 						{	System.out.println("Enter the amount to deposite : ");
 							Bank.get(id).deposit(sc.nextDouble());
+						}
+						else {
+							throw new bankingException("invalid account number.");
 						}
 						
 							
